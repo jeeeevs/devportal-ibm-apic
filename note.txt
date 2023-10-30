@@ -1,4 +1,4 @@
-docker run --name devportal -p 8080:80 -d \
+	docker run --name devportal -p 8080:80 -d \
 	-v $(pwd)/modules:/var/www/html/modules \
 	-v $(pwd)/themes:/var/www/html/themes \
 	drupal:9.5.3

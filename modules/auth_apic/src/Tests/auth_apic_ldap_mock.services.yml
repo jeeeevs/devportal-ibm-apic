@@ -1,6 +1,0 @@
-services:
-  state:
-    class: Drupal\auth_apic\Service\Mocks\MockLDAPStateService
-    arguments: ['@keyvalue', '@cache.bootstrap', '@lock']
-    tags:
-      - { name: needs_destruction }

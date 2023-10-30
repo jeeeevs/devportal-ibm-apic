@@ -61,10 +61,3 @@ function masonry_requirements($phase) {
 function masonry_update_8001(&$sandbox) {
   // Empty update to cause a cache rebuild.
 }
-
-/**
- * Cache rebuild for new masonry configurations and JS.
- */
-function masonry_update_9000(&$sandbox) {
-  // Empty update to cause a cache rebuild.
-}

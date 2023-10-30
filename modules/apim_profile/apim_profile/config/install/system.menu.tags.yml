@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: tags
-label: Tags
-description: ''
-locked: false

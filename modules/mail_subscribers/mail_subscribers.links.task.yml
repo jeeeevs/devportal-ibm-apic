@@ -1,5 +1,0 @@
-mail_subscribers.startWizard:
-  route_name: mail_subscribers.startWizard
-  base_route: entity.user.collection
-  title: Email
-  weight: 20

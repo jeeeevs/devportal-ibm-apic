@@ -1,7 +1,0 @@
-adminform:
-  version: 1.x
-  css:
-    component:
-      css/generator.css: { }
-  js:
-    js/generator.js: { }
