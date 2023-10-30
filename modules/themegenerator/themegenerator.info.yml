@@ -1,0 +1,10 @@
+name: IBM API Developer Portal Sub-theme Generator
+type: module
+description: Generate an IBM API Connect sub-theme
+package: IBM API Developer Portal
+core_version_requirement: ^8 || ^9
+version: 8.x-2.14.1
+project: themegenerator
+dependencies:
+- ibm_apim:ibm_apim
+interface translation project: themegenerator

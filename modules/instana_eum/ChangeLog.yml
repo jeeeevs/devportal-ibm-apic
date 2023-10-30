@@ -1,0 +1,26 @@
+changes:
+  8.x-2.14.0:
+  - update version 8.x-2.13.1 -> 8.x-2.14.0
+  8.x-2.13.0:
+  - update version 8.x-2.12.1 -> 8.x-2.13.0
+  8.x-2.12.0:
+  - update version 8.x-2.11.1 -> 8.x-2.12.0
+  8.x-2.11.0:
+  - update version 8.x-2.10.1 -> 8.x-2.11.0
+  8.x-2.10.0:
+  - update version 8.x-2.9.1 -> 8.x-2.10.0
+  8.x-2.9.0:
+  - update version 8.x-2.8.6 -> 8.x-2.9.0
+  8.x-2.8.5: null
+  8.x-2.8.4:
+  - fix case of the getFormId function
+  8.x-2.8.3:
+  - add placeholder unit test
+  - fix build script
+  - update URL
+  - add copyright
+  8.x-2.8.2: null
+  8.x-2.8.1:
+  - Update Jenkinsfile
+  - Update instana_eum.info.yml
+  8.x-4.0.1: null

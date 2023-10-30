@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the featuredcontent block
+ *
+ * @ingroup themeable
+ */
+#}
+{% if nodes|length > 0 %}
+  <div class="featuredcontent featuredcontentBlockWrapper">
+    <div class="featuredcontentBlockHeader">
+      <h3>{{ 'Explore products'|t }}</h3>
+      <a href="{{ path('view.products.page_1') }}">{{ 'View all'|t }}</a>
+    </div>
+    <div class="featuredcontentContentContainer">
+      <div
+          class="featuredcontentNodeContainer featuredcontentNodeType-{{ nodeType|clean_class }} featuredcontentAlgorithm-{{ algorithm|clean_class }}">
+        {% for node in nodes %}
+          <div class="featuredcontentNode featuredcontentNodeID-{{ node.nid|clean_class }}">
+            <div class="featuredcontentNodeInner">
+              <div class="featuredcontentNodeHeader">
+                {% if node.image %}
+                  <div class="featuredcontentNodeImage">
+                    <img src="{{- node.image -}}" alt=""/>
+                  </div>
+                {% endif %}
+                <div class="featuredcontentNodeTitle">
+                  {% if nodeType == 'api' %}
+                    {% if node.apic_pathalias is defined and node.apic_pathalias is not empty %}
+                      {% set apiNode = node.apic_pathalias %}
+                    {% else %}
+                      {% set apiNode = node.nid %}
+                    {% endif %}
+                    <a href="{{- path('apic_api.view', {'apiNode': apiNode}) -}}"
+                       rel="bookmark">{{ node.title }}
+                      {% if showVersions %}
+                        <span class="featuredcontentNodeVersion">{{ node.version }}</span>
+                      {% endif %}</a>
+                  {% else %}
+                    {% if node.apic_pathalias is defined and node.apic_pathalias is not empty %}
+                      {% set prodNode = node.apic_pathalias %}
+                    {% else %}
+                      {% set prodNode = node.nid %}
+                    {% endif %}
+                    <a href="{{- path('product.view', {'prodNode': prodNode}) -}}"
+                       rel="bookmark">{{ node.title }}
+                      {% if showVersions %}
+                        <span class="featuredcontentNodeVersion">{{ node.version }}</span>
+                      {% endif %}</a>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="featuredcontentNodeInfo">
+                {% if node.summary is defined and node.summary is not empty %}
+                  <div class="featuredcontentNodeSummary">
+                    {{ node.summary }}
+                  </div>
+                {% else %}
+                  <div class="featuredcontentNodeDescription">
+                    {{ node.description|raw }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}

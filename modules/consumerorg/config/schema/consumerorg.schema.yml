@@ -1,0 +1,103 @@
+field.field.node.consumerorg.consumerorg_id:
+  type: ibm_apim_config_object
+  label: 'Organization ID'
+
+field.field.node.consumerorg.consumerorg_invites:
+  type: ibm_apim_config_object
+  label: 'Invites'
+
+field.field.node.consumerorg.consumerorg_memberlist:
+  type: ibm_apim_config_object
+  label: 'List of members'
+
+field.field.node.consumerorg.consumerorg_members:
+  type: ibm_apim_config_object
+  label: 'Members'
+
+field.field.node.consumerorg.consumerorg_name:
+  type: ibm_apim_config_object
+  label: 'Organization Name'
+
+field.field.node.consumerorg.consumerorg_owner:
+  type: ibm_apim_config_object
+  label: 'Organization Owner'
+
+field.field.node.consumerorg.consumerorg_roles:
+  type: ibm_apim_config_object
+  label: 'Roles'
+
+field.field.node.consumerorg.consumerorg_tags:
+  type: ibm_apim_config_object
+  label: 'Organization Communities'
+
+field.field.node.consumerorg.consumerorg_url:
+  type: ibm_apim_config_object
+  label: 'Organization URL'
+
+field.field.node.consumerorg.apic_catalog_id:
+  type: ibm_apim_config_object
+  label: 'APIC Catalog ID'
+
+field.field.node.consumerorg.apic_hostname:
+  type: ibm_apim_config_object
+  label: 'APIC Hostname'
+
+field.field.node.consumerorg.apic_pathalias:
+  type: ibm_apim_config_object
+  label: 'Path Alias'
+
+field.field.node.consumerorg.apic_provider_id:
+  type: ibm_apim_config_object
+  label: 'APIC Provider ID'
+
+field.field.node.consumerorg.apic_rating:
+  type: ibm_apim_config_object
+  label: 'Rating'
+
+field.field.node.consumerorg.apic_tags:
+  type: ibm_apim_config_object
+  label: 'Tags'
+
+field.field.node.consumerorg.consumerorg_payment_method_refs:
+  type: ibm_apim_config_object
+  label: 'Payment Method Reference'
+
+field.field.node.consumerorg.consumerorg_def_payment_ref:
+  type: ibm_apim_config_object
+  label: 'Default Payment Method Reference'
+
+field.field.node.consumerorg.apic_created_at:
+  type: ibm_apim_config_object
+  label: 'Creation time'
+
+field.field.node.consumerorg.apic_updated_at:
+  type: ibm_apim_config_object
+  label: 'Modification time'
+
+consumerorg.consumerorg_payment_method.*:
+  type: content_entity
+  label: 'Consumer Organization Payment Method'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    uuid:
+      type: string
+      label: 'UUID'
+    title:
+      type: string
+      label: 'Title'
+    payment_method_type_url:
+      type: string
+      label: 'Payment method schema type URL'
+    billing_url:
+      type: string
+      label: 'Configured Billing URL'
+    configuration:
+      type: string
+      label: 'Configuration'
+    consumerorg_url:
+      type: string
+      label: 'Consumer Organization URL'
+
+

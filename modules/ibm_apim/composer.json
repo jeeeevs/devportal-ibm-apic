@@ -1,0 +1,19 @@
+{
+  "name": "drupal/ibm_apim",
+  "description": "IBM APIC integration",
+  "type": "drupal-module",
+  "homepage": "https://github.com/ibm-apiconnect/devportal",
+  "support": {
+    "issues": "https://github.com/ibm-apiconnect/devportal",
+    "source": "https://github.com/ibm-apiconnect/devportal"
+  },
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "require": {
+    "salsify/json-streaming-parser": "^8.2",
+    "stripe/stripe-php": "^7.25"
+  }
+}

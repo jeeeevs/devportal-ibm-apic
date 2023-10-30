@@ -1,0 +1,238 @@
+changes:
+  8.x-2.14.0:
+  - update version 8.x-2.13.1 -> 8.x-2.14.0
+  8.x-2.13.0:
+  - update version 8.x-2.12.6 -> 8.x-2.13.0
+  8.x-2.12.5:
+  - Revert "markdown fix"
+  8.x-2.12.4:
+  - markdown fix
+  8.x-2.12.3:
+  - Always create apis with admin author
+  8.x-2.12.2:
+  - Fix unreliable test
+  8.x-2.12.1:
+  - Fix apiacl for new search404
+  8.x-2.12.0:
+  - update version 8.x-2.11.2 -> 8.x-2.12.0
+  8.x-2.11.1: null
+  8.x-2.11.0:
+  - update version 8.x-2.10.1 -> 8.x-2.11.0
+  8.x-2.10.0:
+  - update version 8.x-2.9.5 -> 8.x-2.10.0
+  8.x-2.9.4:
+  - apis need creating before products
+  8.x-2.9.3:
+  - Product filtering tighened up. (#152)
+  8.x-2.9.2:
+  - upgrade phpunit
+  8.x-2.9.1:
+  - use more secure passwords
+  8.x-2.9.0:
+  - update version 8.x-2.8.14 -> 8.x-2.9.0
+  8.x-2.8.13: null
+  8.x-2.8.12:
+  - support pathalias in test tool (#150)
+  8.x-2.8.11: null
+  8.x-2.8.10: null
+  8.x-2.8.9: null
+  8.x-2.8.8:
+  - refactor taxonomy services
+  8.x-2.8.7:
+  - remove deprecated function calls
+  8.x-2.8.6:
+  - Added example_array_items explorer option
+  8.x-2.8.5:
+  - need to call correct hooks for the placeholder icons
+  8.x-2.8.4:
+  - need a node id before this update will work
+  8.x-2.8.3:
+  - Fixed explorer redirects
+  8.x-2.8.2:
+  - git -> gitci
+  8.x-2.8.1:
+  - velox/analytics#1462 - refactor Jenkinsfile
+  8.x-2.8.0:
+  - update version 8.x-2.7.1 -> 8.x-2.8.0
+  8.x-2.7.0:
+  - update version 8.x-2.6.10 -> 8.x-2.7.0
+  8.x-2.6.9:
+  - Remove unnecessary use statement
+  8.x-2.6.8:
+  - move devel settings to their own config object
+  8.x-2.6.7:
+  - add support for getting artifact document back via drush
+  8.x-2.6.6:
+  - fix up acl tests
+  8.x-2.6.5: null
+  8.x-2.6.4:
+  - Added api ACL tests
+  8.x-2.6.3: null
+  8.x-2.6.2:
+  - Switch to catching Throwable
+  8.x-2.6.1: null
+  8.x-2.6.0:
+  - update version 8.x-2.5.0 -> 8.x-2.6.0
+  8.x-2.4.21:
+  - need to use definitive sort to avoid dupes with paging
+  8.x-2.4.20:
+  - more resilient
+  8.x-2.4.19: null
+  8.x-2.4.18:
+  - tags are urls not words
+  8.x-2.4.17:
+  - fix api access check
+  8.x-2.4.16:
+  - move check
+  - ensure attribute exists before checking it
+  - need to check ACL explicitly
+  8.x-2.4.15: null
+  8.x-2.4.14:
+  - merge mess
+  8.x-2.4.13: null
+  8.x-2.4.12: null
+  8.x-2.4.11:
+  - handle title not being translated
+  8.x-2.4.10: null
+  8.x-2.4.9:
+  - Fix card in api list view (#106)
+  8.x-2.4.8:
+  - use pathaliases
+  - fix path alias test
+  - path alias test
+  - make sure api title is actually set
+  8.x-2.4.7:
+  - get rid of warning in logs
+  8.x-2.4.6:
+  - Add tokens
+  8.x-2.4.5:
+  - hide the API State for unenforced APIs
+  8.x-2.4.4:
+  - add catchall type of AsyncAPI for protocol
+  8.x-2.4.3:
+  - Copyright statements for 2021
+  8.x-2.4.2:
+  - drush commands to get individual nodes
+  8.x-2.4.1:
+  - ensure custom fields are actual fields
+  8.x-2.4.0:
+  - update version: 8.x-2.3.7 -> 8.x-2.4.0
+  8.x-2.3.6:
+  - missing upgrade function maybe?
+  8.x-2.3.5:
+  - Translate custom strings in our views too
+  8.x-2.3.4:
+  - add the worker.js files to the library too
+  8.x-2.3.3:
+  - strip markdown from api descriptions
+  8.x-2.3.2:
+  - add ability to disable swagger validation
+  8.x-2.3.1: null
+  8.x-2.3.0:
+  - update version: 8.x-2.2.16 -> 8.x-2.3.0
+  8.x-2.2.15:
+  - add credentials name and title to the array fed to explorer
+  8.x-2.2.14: null
+  8.x-2.2.13:
+  - remove preview button from comments
+  8.x-2.2.12: null
+  8.x-2.2.11: null
+  8.x-2.2.10:
+  - tidy up embedded api products
+  8.x-2.2.9:
+  - update views to use no content block
+  8.x-2.2.8:
+  - fix links from api titles
+  8.x-2.2.7:
+  - update icon images
+  8.x-2.2.6: null
+  8.x-2.2.5:
+  - minor tweak to css
+  - change api embedded view to carbon X design
+  8.x-2.2.4:
+  - restyle api card/tile (#102)
+  8.x-2.2.3: null
+  8.x-2.2.2:
+  - set default pagesize to be 10
+  - increase gutter for latest masonry views
+  8.x-2.2.1: null
+  8.x-2.2.0:
+  - Update apic_api.info.yml
+  8.x-2.1.2:
+  - remove Rules support from our code
+  8.x-2.1.1:
+  - Tempmerge (#99)
+  8.x-2.1.0:
+  - update version: 8.x-2.0.35 -> 8.x-2.1.0
+  8.x-2.0.34: null
+  8.x-2.0.33:
+  - fix missing id on title
+  8.x-2.0.32:
+  - few graphql css necessary tweaks
+  8.x-2.0.31:
+  - tidy up api explorer view
+  8.x-2.0.30:
+  - Updated apic_description field config to be translatable
+  8.x-2.0.29:
+  - ensure paramconverters use translated nodes
+  8.x-2.0.28:
+  - set upgrade dependency for view update
+  8.x-2.0.27:
+  - Allow WSDL files download for SOAP APIs with non-alphanumberic characters names
+  8.x-2.0.26: null
+  8.x-2.0.25:
+  - wrong file name
+  8.x-2.0.24:
+  - Separating the categories from the manually added tags to avoid tags duplication
+  8.x-2.0.23:
+  - set status of entity view display on upgrade
+  8.x-2.0.22:
+  - api module needs the display mode to have been created first
+  8.x-2.0.21:
+  - create new view using apis
+  - add new api entity view display
+  8.x-2.0.20:
+  - allow use of name:version in param
+  8.x-2.0.19:
+  - copyright date
+  8.x-2.0.18:
+  - need to link to api in context of product
+  8.x-2.0.17: null
+  8.x-2.0.16:
+  - handle translated apis
+  8.x-2.0.15:
+  - require blazy
+  8.x-2.0.14:
+  - change default number of items per page
+  - use blazy to avoid masonry meddling with css
+  8.x-2.0.13:
+  - use embedded view mode
+  8.x-2.0.12:
+  - Update Jenkinsfile
+  8.x-2.0.11:
+  - product view implemented
+  8.x-2.0.10:
+  - add option to show mtls header of an api
+  8.x-2.0.9:
+  - ChangeLogs flipped upside down.
+  8.x-2.0.8:
+  - fix api upgrade
+  8.x-2.0.7:
+  - set allowed_values for api protocol in upgrade
+  8.x-2.0.6:
+  - wrong field name
+  8.x-2.0.5:
+  - fix application list for apis
+  8.x-2.0.4: null
+  8.x-2.0.3: null
+  8.x-2.0.2: null
+  8.x-2.0.1:
+  - skip tests
+  - Bump Major version in master to differentiate from the service stream
+  8.x-1.1.66:
+  - use field name instead of translatable key
+  8.x-1.1.65:
+  - handle other languages
+  8.x-1.1.64:
+  - Merge pull request
+  - Logging all the changes between the two successful builds. All the commits since the last successful build are fetched and stored in the ChangeLog.yml file. Commits are also filtered before logging them. Commits that start with 'INT' or 'bump version' are omitted.

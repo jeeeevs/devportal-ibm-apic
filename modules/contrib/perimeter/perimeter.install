@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * Add not_found_exception_patterns on update if not yet set.
+ */
+function perimeter_update_8201() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('perimeter.settings');
+  $not_found_exception_patterns = $config->get ('not_found_exception_patterns');
+  if(empty($not_found_exception_patterns)){
+    // Set if empty (not set yet):
+    $config->set('not_found_exception_patterns', [
+        '/.*\\.aspx/',
+        '/.*\\.asp/',
+        '/.*\\.jsp/',
+        '/\\/blog_edit\\.php/',
+        '/\\/blogs\\.php/',
+        '/\\/wp-admin.*/',
+        '/\\/wp-login.*/',
+        '/\\/my_blogs/',
+        '/\\/system\\/.*\\.php/',
+        '/.*systopice.*/',
+         '/.*login.json/',
+         '/\\/episerver.*/'
+    ]);
+    $config->save(TRUE);
+  }
+}

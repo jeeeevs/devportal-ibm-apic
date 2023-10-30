@@ -1,0 +1,58 @@
+core:
+  version: 1.x
+  css:
+    component:
+      css/core.css: {}
+      css/content.css: {}
+  js:
+    js/frontpage.js: {}
+  dependencies:
+    - 'masonry/masonry.layout'
+    - 'core/drupal.dialog.ajax'
+    - 'core/jquery.form'
+billing:
+  version: 1.x
+  js:
+    js/billing.js: {}
+    https://checkout.stripe.com/checkout.js: { type: external, minified: true }
+
+# CSS and JS for APIC Analytics
+# the JS files will be added via a hook_library_info_alter since the filename changes
+analytics:
+  version: 1.x
+  dependencies:
+    - core/drupalSettings
+  css:
+    component:
+      css/analytics.css: {}
+
+org_analytics:
+  version: 1.x
+  dependencies:
+    - ibm_apim/analytics
+  js:
+    js/org_analytics.js: {}
+
+single_click:
+  version: 1.x
+  js:
+    js/link_single_click.js: {}
+
+delay_validate:
+  version: 1.x
+  js:
+    js/delay_ajax_keyup.js: {}
+
+validate_password:
+  version: 1.x
+  js:
+    js/zxcvbn.js: {}
+    js/validatePassword.js: {}
+
+modal:
+  version: 1.x
+  css:
+    component:
+      css/modal.css: { }
+  js:
+    js/modal.js: {}

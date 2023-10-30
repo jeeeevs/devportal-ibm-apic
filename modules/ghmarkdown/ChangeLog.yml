@@ -1,0 +1,57 @@
+changes:
+  8.x-2.14.0:
+  - update version 8.x-2.13.1 -> 8.x-2.14.0
+  8.x-2.13.0:
+  - update version 8.x-2.12.1 -> 8.x-2.13.0
+  8.x-2.12.0:
+  - update version 8.x-2.11.1 -> 8.x-2.12.0
+  8.x-2.11.0:
+  - update version 8.x-2.10.1 -> 8.x-2.11.0
+  8.x-2.10.0:
+  - update version 8.x-2.9.2 -> 8.x-2.10.0
+  8.x-2.9.1:
+  - upgrade phpunit
+  8.x-2.9.0:
+  - update version 8.x-2.8.4 -> 8.x-2.9.0
+  8.x-2.8.3: null
+  8.x-2.8.2:
+  - git -> gitci
+  8.x-2.8.1:
+  - velox/analytics#1462 - refactor Jenkinsfile
+  8.x-2.8.0:
+  - update version 8.x-2.7.1 -> 8.x-2.8.0
+  8.x-2.7.0:
+  - update version 8.x-2.6.3 -> 8.x-2.7.0
+  8.x-2.6.2:
+  - add twig markdown filter
+  8.x-2.6.1: null
+  8.x-2.6.0:
+  - update version 8.x-2.5.0 -> 8.x-2.6.0
+  8.x-2.4.3: null
+  8.x-2.4.2: null
+  8.x-2.4.1:
+  - Add drupal core compatibility info
+  8.x-2.4.0:
+  - update version: 8.x-2.3.1 -> 8.x-2.4.0
+  8.x-2.3.0:
+  - update version: 8.x-2.2.1 -> 8.x-2.3.0
+  8.x-2.2.0:
+  - Update ghmarkdown.info.yml
+  8.x-2.1.1: null
+  8.x-2.1.0:
+  - update version: 8.x-2.0.9 -> 8.x-2.1.0
+  8.x-2.0.8: null
+  8.x-2.0.7: null
+  8.x-2.0.6: null
+  8.x-2.0.5:
+  - Updated to variable build label
+  8.x-2.0.4:
+  - ChangeLogs flipped upside down.
+  8.x-2.0.3: null
+  8.x-2.0.2: null
+  8.x-2.0.1:
+  - skip tests
+  - Bump Major version in master to differentiate from the service stream
+  8.x-1.1.13:
+  - Merge pull request
+  - Logging all the changes between the two successful builds. All the commits since the last successful build are fetched and stored in the ChangeLog.yml file. Commits are also filtered before logging them. Commits that start with 'INT' or 'bump version' are omitted.

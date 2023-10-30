@@ -1,0 +1,70 @@
+<?php
+
+/********************************************************* {COPYRIGHT-TOP} ***
+ * Licensed Materials - Property of IBM
+ * 5725-L30, 5725-Z22
+ *
+ * (C) Copyright IBM Corporation 2018, 2021
+ *
+ * All Rights Reserved.
+ * US Government Users Restricted Rights - Use, duplication or disclosure
+ * restricted by GSA ADP Schedule Contract with IBM Corp.
+ ********************************************************** {COPYRIGHT-END} **/
+
+/**
+ * @file
+ * Install, update and uninstall functions for the auth_apic module.
+ */
+
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_install().
+ *
+ * @see system_install()
+ */
+function auth_apic_install() {
+
+  // disable drupal email verification
+  \Drupal::service('config.factory')->getEditable('user.settings')->set('verify_mail', FALSE)->save();
+
+  // High module weight allows our form_alter calls to be run after every other module ensuring that we win
+  module_set_weight('auth_apic', 999);
+
+}
+
+/**
+ * Clean up properties which could have been added to admin user due to an issue allowing login from a different user registry.
+ */
+function auth_apic_upgrade_8121() {
+
+  $admin = User::load('1');
+
+  $properties = ['apic_url', 'apic_user_registry_url', 'first_name', 'last_name'];
+  $save_needed = FALSE;
+
+  foreach ($properties as $property) {
+    if ($admin !== NULL && isset($admin->$property) && $admin->$property->value !== NULL) {
+      \Drupal::logger('auth_apic.upgrade')->notice('Unsetting @property on admin user.', ['@property' => $property]);
+      $admin->set($property, NULL);
+      $save_needed = TRUE;
+    }
+  }
+
+  if ($save_needed) {
+    $admin->save();
+  }
+
+}
+
+/**
+ * Update the field storage id for user_picture to correct for a typo in early fixpacks
+ */
+function auth_apic_upgrade_8122() {
+  $fieldConfig = \Drupal\field\Entity\FieldConfig::loadByName('user', 'user', 'user_picture');
+  $storage = $fieldConfig->getFieldStorageDefinition();
+  if ($storage !== NULL) {
+    $storage->set('id', 'user.user_picture');
+    $storage->save();
+  }
+}

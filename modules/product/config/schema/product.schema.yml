@@ -1,0 +1,203 @@
+field.field.node.product.apic_attachments:
+  type: ibm_apim_config_object
+  label: 'Documentation'
+
+field.field.node.product.apic_catalog_id:
+  type: ibm_apim_config_object
+  label: 'APIC Catalog ID'
+
+field.field.node.product.apic_description:
+  type: ibm_apim_config_object
+  label: 'Description'
+
+field.field.node.product.apic_hostname:
+  type: ibm_apim_config_object
+  label: 'APIC Hostname'
+
+field.field.node.product.apic_image:
+  type: ibm_apim_config_object
+  label: 'Image'
+
+field.field.node.product.apic_pathalias:
+  type: ibm_apim_config_object
+  label: 'Path Alias'
+
+field.field.node.product.apic_provider_id:
+  type: ibm_apim_config_object
+  label: 'APIC Provider ID'
+
+field.field.node.product.apic_rating:
+  type: ibm_apim_config_object
+  label: 'Rating'
+
+field.field.node.product.apic_ref:
+  type: ibm_apim_config_object
+  label: 'Reference'
+
+field.field.node.product.apic_summary:
+  type: ibm_apim_config_object
+  label: 'Summary'
+
+field.field.node.product.apic_tags:
+  type: ibm_apim_config_object
+  label: 'Tags'
+
+field.field.node.product.apic_url:
+  type: ibm_apim_config_object
+  label: 'URL'
+
+field.field.node.product.apic_version:
+  type: ibm_apim_config_object
+  label: 'Version'
+
+field.field.node.product.comment:
+  type: ibm_apim_config_object
+  label: 'Comments'
+
+field.field.node.product.product_apis:
+  type: ibm_apim_config_object
+  label: 'APIs'
+
+field.field.node.product.product_billing_url:
+  type: ibm_apim_config_object
+  label: 'URL'
+
+field.field.node.product.product_contact_email:
+  type: ibm_apim_config_object
+  label: 'Contact Email'
+
+field.field.node.product.product_contact_name:
+  type: ibm_apim_config_object
+  label: 'Contact Name'
+
+field.field.node.product.product_contact_url:
+  type: ibm_apim_config_object
+  label: 'Contact URL'
+
+field.field.node.product.product_data:
+  type: ibm_apim_config_object
+  label: 'Product document'
+
+field.field.node.product.product_id:
+  type: ibm_apim_config_object
+  label: 'Product ID'
+
+field.field.node.product.product_license_name:
+  type: ibm_apim_config_object
+  label: 'License Name'
+
+field.field.node.product.product_license_url:
+  type: ibm_apim_config_object
+  label: 'License URL'
+
+field.field.node.product.product_name:
+  type: ibm_apim_config_object
+  label: 'Name'
+
+field.field.node.product.product_plans:
+  type: ibm_apim_config_object
+  label: 'Plans'
+
+field.field.node.product.product_state:
+  type: ibm_apim_config_object
+  label: 'State'
+
+field.field.node.product.product_subscribe_enabled:
+  type: ibm_apim_config_object
+  label: 'Subscribable'
+
+field.field.node.product.product_terms_of_service:
+  type: ibm_apim_config_object
+  label: 'Terms of Service'
+
+field.field.node.product.product_view_enabled:
+  type: ibm_apim_config_object
+  label: 'Visible'
+
+field.field.node.product.product_visibility:
+  type: ibm_apim_config_object
+  label: 'Visibility data'
+
+field.field.node.product.product_visibility_authenticated:
+  type: ibm_apim_config_object
+  label: 'Visible only to authenticated users'
+
+field.field.node.product.product_visibility_custom_orgs:
+  type: ibm_apim_config_object
+  label: 'Custom Organization Visibility'
+
+field.field.node.product.product_visibility_custom_tags:
+  type: ibm_apim_config_object
+  label: 'Custom tags visibility'
+
+field.field.node.product.product_visibility_public:
+  type: ibm_apim_config_object
+  label: 'Public visibility'
+
+field.field.node.product.apic_created_at:
+  type: ibm_apim_config_object
+  label: 'Creation time'
+
+field.field.node.product.apic_updated_at:
+  type: ibm_apim_config_object
+  label: 'Modification time'
+
+views.view.products:
+  type: string
+  label: 'Products'
+
+views.view.products.display.default.display_options.exposed_form.options:
+  type: string
+  text_input_required: 'Select any filter and click on Apply to see results'
+
+views.view.products.display.default.display_options.exposed_form.options.bef.sort.advanced:
+  type: string
+  collapsible_label: 'Sort options'
+
+views.view.products.display.default.display_options.exposed_form.options.bef.general:
+  type: string
+  secondary_label: 'Advanced options'
+
+views.view.products.display.default.display_options.filters.title.expose:
+  type: string
+  label: 'Name'
+
+views.view.products.display.default.display_options.filters.term_node_tid_depth.expose:
+  type: string
+  label: 'Category'
+
+views.view.products.display.default.display_options.sorts.title.expose:
+  type: string
+  label: 'Name'
+
+views.view.products.display.default.display_options.sorts.apic_version_value.expose:
+  type: string
+  label: 'Version'
+
+views.view.products.display.default.display_options.sorts.apic_rating_status.expose:
+  type: string
+  label: 'Rating'
+
+views.view.products.display.default.display_options.sorts.created.expose:
+  type: string
+  label: 'Created'
+
+views.view.products.display.default.display_options.sorts.changed.expose:
+  type: string
+  label: 'Changed'
+
+views.view.products.display.default.display_options:
+  type: string
+  title: 'Products'
+
+views.view.products.display.block_1.display_options:
+  type: string
+  title: 'Product List'
+
+views.view.products.display.block_1.display_options.sorts.title.expose:
+  type: string
+  label: 'Name'
+
+views.view.products.display.page_1.display:
+  type: string
+  title: 'Page'

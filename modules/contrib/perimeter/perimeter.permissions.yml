@@ -1,0 +1,4 @@
+bypass perimeter defence rules:
+  title: 'Bypass Perimeter Defence ban rules'
+  description: 'Allow users to bypass the rules defined by Perimeter Defence module.'
+  restrict access: true

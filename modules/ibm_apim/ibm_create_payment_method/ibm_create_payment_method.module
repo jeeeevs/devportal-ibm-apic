@@ -1,0 +1,35 @@
+<?php
+
+/********************************************************* {COPYRIGHT-TOP} ***
+ * Licensed Materials - Property of IBM
+ * 5725-L30, 5725-Z22
+ *
+ * (C) Copyright IBM Corporation 2018, 2021
+ *
+ * All Rights Reserved.
+ * US Government Users Restricted Rights - Use, duplication or disclosure
+ * restricted by GSA ADP Schedule Contract with IBM Corp.
+ ********************************************************** {COPYRIGHT-END} **/
+
+
+/**
+ * Default implementation for creating payment methods
+ *
+ * This function just displays the fields onscreen for the user to provide the details
+ *
+ * @param &$form
+ * @param $integration
+ * @param $billing
+ */
+function ibm_create_payment_method_consumerorg_payment_method_create_alter(&$form, $integration, $billing) {
+  // if no other module is controlling the creation then fallback to inline fields
+  $billingProviderConfig = unserialize(\Drupal::config('ibm_apim.settings')->get('billing_providers'), ['allowed_classes' => FALSE]);
+
+  // check whether we should be using stripe for this billing provider
+  if (!isset($billingProviderConfig[$billing['name']]) || $billingProviderConfig[$billing['name']] === 'ibm_create_payment_method') {
+    // Adds all the fields defined by the configuration schema
+    \Drupal::service('ibm_apim.payment_method_schema')->addConfigurationSchemaFields($form, $integration);
+  }
+
+}
+

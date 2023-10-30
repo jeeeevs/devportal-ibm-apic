@@ -1,0 +1,380 @@
+.welcomebanner {
+  display: flex;
+  justify-content: left;
+  height: 386px;
+  width: 100%;
+  transition: 0.5s;
+  background-color: #0f62fe;
+  background-image: url(../images/hero-background.png);
+  background-size: cover;
+}
+
+.welcomebanner .welcomeimage {
+  height: 300px;
+  width: 300px;
+  margin-right: 2rem;
+}
+
+.welcomebanner .welcomeimage.bee svg {
+  fill-opacity: 0.5;
+  fill: #fff;
+}
+
+.welcomebannertext {
+  z-index: 2;
+  padding: 4rem 1rem 0 2rem;
+  max-width: 80%;
+  color: #ffffff;
+}
+
+@media (max-width: 992px) {
+
+  .welcomebannertext {
+    padding: 2rem 1rem 0 2rem;
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcomebanner .bee {
+    display: none;
+  }
+
+  .welcomebannertext {
+    padding: 2rem 1rem 0 2rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcomebannertext {
+    padding: 1rem 1rem 0 1rem;
+    max-width: 100%;
+  }
+
+}
+
+.welcomebannertext h1 {
+  margin-top: 1em;
+}
+
+.welcomebannertext h2 {
+  padding-bottom: 1rem;
+  max-width: 75%;
+  font-size: 2rem;
+  letter-spacing: 0;
+  line-height: 40px;
+}
+
+welcomebannertext p {
+  font-size: 1.25rem;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+
+.welcomebanner .bannerButtonRow {
+  margin-top: 2rem;
+}
+
+.goahead {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.goahead h3 {
+  font-weight: lighter;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.path-frontpage .apicMainContent h2.block-title {
+  font-weight: 300;
+  padding-top: 1rem;
+  padding-bottom: .5rem
+}
+
+.featured {
+  display: flex;
+}
+
+.featuredapi {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  width: calc(100% / 2 - 38px);
+  padding-bottom: 10px;
+  margin: 0 12px 0 12px;
+}
+
+.fatext {
+  text-align: left;
+  margin: 0 10px;
+}
+
+.fatext h3 {
+  font-size: 1.25rem;
+  padding: .75em 0;
+  font-weight: 300;
+  line-height: 1.25;
+}
+
+section.block-getting-started,
+section.block-go-ahead {
+  background: #ffffff;
+}
+
+.startguide {
+  display: flex;
+}
+
+.block-getting-started .startguide .gsstep div.placeholder {
+  height: 48px;
+  width: 48px;
+  margin-left: 0;
+  margin-right: auto;
+  margin-top: 2rem;
+}
+
+#get-started-wrapper .startguide .gsstep div.placeholder {
+  height: 48px;
+  width: 48px;
+}
+
+.startguide .gsstep.signup div.placeholder {
+  background: transparent url(../images/signup.svg) center left no-repeat;
+
+}
+
+.startguide .gsstep.explore div.placeholder {
+  background: transparent url(../images/exploreapis.svg) center left no-repeat;
+}
+
+.startguide .gsstep.subscribe div.placeholder {
+  background: transparent url(../images/createapp.svg) center left no-repeat;
+}
+
+.gsstep {
+  width: calc(100% / 4 - 38px);
+  padding: 3rem 1rem;
+  margin: 0 0.75rem;
+}
+
+.gsstep h5 {
+  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height: 1.25;
+}
+
+.gsstep a {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: underline;
+}
+
+.gsstep p {
+  min-height: 5rem;
+}
+
+.get_help h3 {
+  font-size: 1.25rem;
+  padding: .75em 0;
+  font-weight: 300;
+  line-height: 1.25;
+}
+
+.get_help h4 {
+  font-size: 1rem;
+  padding: .75em 0;
+  font-weight: 300;
+}
+
+
+@media screen and (max-width: 768px) {
+  .startguide {
+    flex-flow: column wrap;
+  }
+
+  .gsstep {
+    width: calc(100% - 38px);
+  }
+
+  .featured {
+    flex-flow: column wrap;
+  }
+
+  .featuredapi {
+    width: calc(100% - 38px);
+    flex-flow: column wrap;
+  }
+}
+
+.block-get-help {
+  padding: 1rem;
+  color: #fff;
+  background-color: #152935;
+}
+
+.get_help {
+  display: flex;
+}
+
+.get_help .column {
+  margin: 0;
+  width: 25%;
+  min-width: 200px;
+  font-weight: lighter;
+  font-size: 0.875rem;
+  padding: 0 2rem;
+}
+
+.get_help h4 {
+  font-size: 1rem;
+  padding: .75em 0;
+  font-weight: 300;
+  color: #fff;
+}
+
+.get_help div {
+  margin-bottom: 1rem;
+}
+
+.get_help a,
+.get_help a:hover {
+  color: #fff;
+  fill: #fff;
+  display: inline-flex;
+  align-self: center;
+  line-height: 1.5rem;
+  padding: 4px 0 4px 0;
+}
+
+.get_help a svg {
+  margin-left: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.ibmapimGetStarted {
+  background: transparent url(../images/apic-start.svg) no-repeat fixed right center;
+  min-height: calc(100vh - 136px);
+}
+
+.ibmapimGetStarted header {
+  padding-top: 1rem;
+}
+
+.ibmapimGetStarted header h2 {
+  margin: 0;
+  padding: 1rem 0;
+  border: none;
+  color: #161616;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.ibmapimGetStarted header .homepageLink {
+  padding-top: 20px;
+}
+
+.ibmapimGetStarted .getStartedContentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 7%;
+}
+
+.ibmapimGetStarted .getStartedContentWrapper .exploreDiv,
+.ibmapimGetStarted .getStartedContentWrapper .createAppDiv {
+  margin-right: 2px;
+}
+
+.ibmapimGetStarted .getStartedContentWrapper .exploreDiv a,
+.ibmapimGetStarted .getStartedContentWrapper .createAppDiv a {
+  padding: 1rem;
+  color: #161616;
+  max-width: 23rem;
+  width: 23rem;
+  height: 20rem;
+}
+
+.ibmapimGetStarted .getStartedContentWrapper .exploreDiv a:hover,
+.ibmapimGetStarted .getStartedContentWrapper .createAppDiv a:hover {
+  background: #e5e5e5;
+}
+
+.ibmapimGetStarted .getStartedContentWrapper .gsstep {
+  text-align: left;
+  width: auto;
+  padding: 0;
+  margin: unset;
+}
+
+.ibmapimGetStarted .getStartedContentWrapper .getStartedText {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rem 0 0.5rem;
+  height: 100%;
+}
+
+.ibmapimGetStarted .getStartedContentWrapper .getStartedText h3 {
+  margin: 0;
+  font-weight: 400;
+}
+
+.ibmapimGetStarted .getStartedActivities {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.ibmapimGetStarted .homepageLink .breadcrumb {
+  padding: 2rem 0;
+}
+
+/* no permissions page */
+.route-ibm-apimnoperms .page-header,
+.route-ibm-apimnoperms footer {
+  display: none;
+}
+
+.route-ibm-apimnoperms .main-container.container {
+  background-image: url(../images/Error_Page_Illustrations_403.svg);
+  min-height: 600px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.route-ibm-apimnoperms .main-container.container .noPermsContentWrapper {
+  width: 100%;
+  border: 0;
+  background-color: inherit;
+  padding: 100px 2rem 2rem 300px;
+}
+
+.route-ibm-apimnoperms .main-container.container .row {
+  margin: 40px;
+  width: calc(100% - 80px);
+}
+
+.ibmapimNoPermissions .mainContent {
+  font-size: 1.5rem;
+  margin: 2rem 2rem 1rem 0;
+}
+
+.ibmapimNoPermissions .contactLink a {
+  color: #0f62fe;
+}
+
+.supportContentWrapper h2 {
+  font-size: 1.3rem;
+}
+
+.supportContentWrapper p {
+  font-size: 0.875rem;
+}
+
+.block-social-media-links-block .fa-2x {
+  color: #161616;
+}

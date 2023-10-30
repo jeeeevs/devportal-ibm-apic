@@ -1,0 +1,365 @@
+<?php
+
+/********************************************************* {COPYRIGHT-TOP} ***
+ * Licensed Materials - Property of IBM
+ * 5725-L30, 5725-Z22
+ *
+ * (C) Copyright IBM Corporation 2018, 2021
+ *
+ * All Rights Reserved.
+ * US Government Users Restricted Rights - Use, duplication or disclosure
+ * restricted by GSA ADP Schedule Contract with IBM Corp.
+ ********************************************************** {COPYRIGHT-END} **/
+
+use Drupal\Core\Database\Database;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Entity\EntityStorageException;
+
+/**
+ * Function to delete all the consumerorgs in the database
+ * They will be instantly repopulated via content snapshot
+ * This is being done to reliably convert the serialised classes in the database to accessible arrays
+ *
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function consumerorg_update_8101() {
+  $nids = \Drupal::entityQuery('node')
+    ->condition('type', 'consumerorg')
+    ->execute();
+
+  foreach ($nids as $nid) {
+    $node = Node::load($nid);
+    if ($node !== NULL) {
+      $node->delete();
+    }
+
+  }
+
+}
+
+/**
+ * As we're switching to using the proper consumerorg form mode we need to hide the fields we dont want to see
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function consumerorg_update_8102() {
+  $formDisplay = \Drupal::entityTypeManager()->getStorage('entity_form_display')->load('node.consumerorg.default');
+  if ($formDisplay !== NULL) {
+    $consumerorg_name = $formDisplay->getComponent('title');
+    if ($consumerorg_name === NULL) {
+      // ensure the title field is visible
+      $formDisplay->setComponent('title', [
+        'type' => 'string_textfield',
+        'weight' => 0,
+        'region' => 'content',
+        'settings' => [
+          'size' => 60,
+          'placeholder' => '',
+        ],
+        'third_party_settings' => [],
+      ]);
+    }
+    // hide the other fields that used to be visible by default
+    foreach (['apic_rating', 'apic_tags', 'created', 'langcode', 'uid'] as $fieldName) {
+      $formDisplay->removeComponent($fieldName);
+    }
+    $formDisplay->save();
+  }
+
+}
+
+/**
+ * Enable captcha for invite and reinvite forms
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function consumerorg_update_8103() {
+  $moduleHandler = \Drupal::service('module_handler');
+  if ($moduleHandler->moduleExists('captcha')) {
+    $captcha_point = \Drupal::entityTypeManager()->getStorage('captcha_point')->load('consumerorg_invite_user_form');
+    if (!isset($captcha_point)) {
+      $captcha_point = new \Drupal\captcha\Entity\CaptchaPoint([
+        'formId' => 'consumerorg_invite_user_form',
+        'captchaType' => 'default',
+      ], 'captcha_point');
+      $captcha_point->enable()->save();
+    }
+
+    $captcha_point2 = \Drupal::entityTypeManager()->getStorage('captcha_point')->load('consumerorg_resend_invitation_form');
+    if (!isset($captcha_point2)) {
+      $captcha_point2 = new \Drupal\captcha\Entity\CaptchaPoint([
+        'formId' => 'consumerorg_resend_invitation_form',
+        'captchaType' => 'default',
+      ], 'captcha_point');
+      $captcha_point2->enable()->save();
+    }
+  }
+}
+
+/**
+ * add consumerorg_payment_method_refs and consumerorg_def_payment_ref fields
+ *
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function consumerorg_update_8104() {
+  // Create a new field storage 'consumerorg_payment_method_refs'
+  $fieldStorageConfig = FieldStorageConfig::create([
+    'field_name' => 'consumerorg_payment_method_refs',
+    'entity_type' => 'node',
+    'type' => 'entity_reference',
+    'required' => FALSE,
+    'translatable' => FALSE,
+    'cardinality' => -1,
+    'settings' => ['target_type' => 'consumerorg_payment_method'],
+  ]);
+  $fieldStorageConfig->save();
+
+  // Create a new field for the consumerorg module
+  $fieldConfig = FieldConfig::create([
+    'field_name' => 'consumerorg_payment_method_refs',
+    'entity_type' => 'node',
+    'bundle' => 'consumerorg',
+    'translatable' => FALSE,
+    'field_type' => 'entity_reference',
+    'label' => t('Payment Method References'),
+    'settings' => [
+      'handler' => 'default:consumerorg_payment_method',
+      'handler_settings' => ['target_bundles' => NULL, 'auto_create' => FALSE],
+    ],
+  ]);
+  $fieldConfig->save();
+
+  // Create a new field storage 'consumerorg_def_payment_ref'
+  $defaultFieldStorageConfig = FieldStorageConfig::create([
+    'field_name' => 'consumerorg_def_payment_ref',
+    'entity_type' => 'node',
+    'type' => 'entity_reference',
+    'required' => FALSE,
+    'translatable' => FALSE,
+    'cardinality' => 1,
+    'settings' => ['target_type' => 'consumerorg_payment_method'],
+  ]);
+  $defaultFieldStorageConfig->save();
+
+  // Create a new field for the consumerorg module
+  $defaultFieldConfig = FieldConfig::create([
+    'field_name' => 'consumerorg_def_payment_ref',
+    'entity_type' => 'node',
+    'bundle' => 'consumerorg',
+    'translatable' => FALSE,
+    'field_type' => 'entity_reference',
+    'label' => t('Default Payment Method Reference'),
+    'settings' => [
+      'handler' => 'default:consumerorg_payment_method',
+      'handler_settings' => ['target_bundles' => NULL, 'auto_create' => FALSE],
+    ],
+  ]);
+  $defaultFieldConfig->save();
+
+  // Modify entity form display modes to show consumerorg_payment_method_refs field
+  $viewDisplay = \Drupal::entityTypeManager()->getStorage('entity_view_display')->load('node.consumerorg.default');
+  if ($viewDisplay !== NULL) {
+    // ensure we can handle this existing already too
+    $component = $viewDisplay->getComponent('consumerorg_payment_method_refs');
+    if (isset($component)) {
+      $viewDisplay->removeComponent('consumerorg_payment_method_refs');
+    }
+    $component = $viewDisplay->getComponent('consumerorg_def_payment_ref');
+    if (isset($component)) {
+      $viewDisplay->removeComponent('consumerorg_def_payment_ref');
+    }
+    // add our new field
+    $viewDisplay->setComponent('consumerorg_payment_method_refs', [
+      'weight' => 103,
+      'label' => 'above',
+      'settings' => ['link' => TRUE],
+      'region' => 'content',
+      'type' => 'entity_reference_label',
+    ]);
+    $viewDisplay->setComponent('consumerorg_def_payment_ref', [
+      'weight' => 104,
+      'label' => 'above',
+      'settings' => ['link' => TRUE],
+      'region' => 'content',
+      'type' => 'entity_reference_label',
+    ]);
+    $viewDisplay->save();
+  }
+}
+
+/**
+ * Delete existing payment methods and update the db schema
+ * the data will be repopulated by apim
+ *
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ */
+function consumerorg_update_8105() {
+  $tables = ["consumerorg_payment_methods"];
+  $database = \Drupal::database();
+  // Retrieve existing field data in consumerorg_payment_methods table.
+  foreach ($tables as $table) {
+    // Delete any table data.
+    if ($database->schema() !== NULL && $database->schema()->tableExists($table)) {
+      $database->truncate($table)->execute();
+    }
+  }
+  try {
+    $entityDefUpManager = \Drupal::service('ibm_apim.apic_definition_update_manager');
+    $entityDefUpManager->applyUpdates();
+    if ($database->schema() !== NULL && $database->schema()->tableExists("consumerorg_payment_methods")) {
+      Database::getConnection()->schema()->changeField('consumerorg_payment_methods', 'id', 'id', [
+        'type' => 'int',
+        'not null' => TRUE,
+        'auto_increment' => TRUE,
+      ]);
+
+      $storage_definition = BaseFieldDefinition::create('string')
+        ->setLabel(t('UUID'))
+        ->setDescription(t('The UUID of the Payment Method entity.'))
+        ->setReadOnly(TRUE);
+      \Drupal::entityDefinitionUpdateManager()
+        ->installFieldStorageDefinition('uuid', 'consumerorg_payment_method', 'consumerorg', $storage_definition);
+
+      \Drupal::logger('consumerorg')->notice('Successfully applied updates');
+    }
+    else {
+      // if entity missing then install it
+      \Drupal::entityDefinitionUpdateManager()->installEntityType(\Drupal::entityTypeManager()
+        ->getDefinition('consumerorg_payment_method'));
+    }
+  } catch (EntityStorageException $e) {
+    \Drupal::logger('consumerorg')->notice('exception message: %message', ['%message' => $e->getMessage()]);
+  }
+}
+
+/**
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function consumerorg_update_8201() {
+  // Create a new field storage 'apic_created_at'
+  $fieldStorageConfig = FieldStorageConfig::create([
+    'field_name' => 'apic_created_at',
+    'entity_type' => 'node',
+    'type' => 'timestamp',
+    'translatable' => FALSE,
+    'required' => FALSE,
+    'cardinality' => 1,
+  ]);
+  $fieldStorageConfig->save();
+
+  // Create a new field for the consumerorg module
+  $fieldConfig = FieldConfig::create([
+    'field_name' => 'apic_created_at',
+    'field_type' => 'timestamp',
+    'entity_type' => 'node',
+    'bundle' => 'consumerorg',
+    'translatable' => FALSE,
+    'label' => t('Creation time'),
+  ]);
+  $fieldConfig->save();
+
+  // Create a new field storage 'apic_updated_at'
+  $fieldStorageConfig = FieldStorageConfig::create([
+    'field_name' => 'apic_updated_at',
+    'entity_type' => 'node',
+    'type' => 'timestamp',
+    'translatable' => FALSE,
+    'required' => FALSE,
+    'cardinality' => 1,
+  ]);
+  $fieldStorageConfig->save();
+
+  // Create a new field for the consumerorg module
+  $fieldConfig = FieldConfig::create([
+    'field_name' => 'apic_updated_at',
+    'field_type' => 'timestamp',
+    'entity_type' => 'node',
+    'bundle' => 'consumerorg',
+    'translatable' => FALSE,
+    'label' => t('Modification time'),
+  ]);
+  $fieldConfig->save();
+
+  // update entities
+  $database = \Drupal::database();
+  try {
+    $entityDefUpManager = \Drupal::service('ibm_apim.apic_definition_update_manager');
+    $entityDefUpManager->applyUpdates();
+    if ($database->schema() !== NULL && $database->schema()->tableExists('consumerorg_payment_methods')) {
+      $created_at = BaseFieldDefinition::create('integer')
+        ->setLabel(t('Creation time'))
+        ->setDescription(t('The APIC creation timestamp'))
+        ->setSetting('unsigned', TRUE)
+        ->setReadOnly(TRUE);
+      \Drupal::entityDefinitionUpdateManager()
+        ->installFieldStorageDefinition('created_at', 'consumerorg_payment_method', 'consumerorg', $created_at);
+
+      $updated_at = BaseFieldDefinition::create('integer')
+        ->setLabel(t('Modification time'))
+        ->setDescription(t('The APIC modification timestamp'))
+        ->setSetting('unsigned', TRUE)
+        ->setReadOnly(TRUE);
+      \Drupal::entityDefinitionUpdateManager()
+        ->installFieldStorageDefinition('updated_at', 'consumerorg_payment_method', 'consumerorg', $updated_at);
+    }
+    \Drupal::logger('consumerorg')->notice('Successfully applied entity updates');
+  } catch (EntityStorageException $e) {
+    \Drupal::logger('consumerorg')->notice('exception message: %message', ['%message' => $e->getMessage()]);
+  }
+}
+
+/**
+ * Set the storage schema and add an index to the consumerorg_url column of the payment methods table
+ */
+function consumerorg_update_8202() {
+  // update entities
+  $database = \Drupal::database();
+  try {
+    $entityDefUpManager = \Drupal::service('ibm_apim.apic_definition_update_manager');
+    $entityDefUpManager->applyUpdates();
+    if ($database->schema() !== NULL && $database->schema()->tableExists('consumerorg_payment_methods')) {
+      $created_by = BaseFieldDefinition::create('string')
+        ->setLabel(t('Created by'))
+        ->setDescription(t('The APIC created by user url'))
+        ->setReadOnly(TRUE);
+      \Drupal::entityDefinitionUpdateManager()
+        ->installFieldStorageDefinition('created_by', 'consumerorg_payment_method', 'consumerorg', $created_by);
+
+      $updated_by = BaseFieldDefinition::create('string')
+        ->setLabel(t('Updated by'))
+        ->setDescription(t('The APIC updated by user url'))
+        ->setReadOnly(TRUE);
+      \Drupal::entityDefinitionUpdateManager()
+        ->installFieldStorageDefinition('updated_by', 'consumerorg_payment_method', 'consumerorg', $updated_by);
+    }
+    \Drupal::logger('consumerorg')->notice('Successfully applied entity updates');
+  } catch (EntityStorageException $e) {
+    \Drupal::logger('consumerorg')->notice('exception message: %message', ['%message' => $e->getMessage()]);
+  }
+
+  $entity_id = 'consumerorg_payment_method';
+  $storageClass = \Drupal\consumerorg\PaymentMethodSchema::class;
+  $manager = \Drupal::entityDefinitionUpdateManager();
+
+  // Get the current entity type definition, ensure the storage schema
+  // class is set.
+  $entityTypeTable = $manager->getEntityType($entity_id);
+  if ($entityTypeTable !== NULL) {
+    $entity_type = $entityTypeTable->setHandlerClass('storage_schema', $storageClass);
+    if ($entity_type !== NULL) {
+      // Regenerate entity type indexes.
+      $manager->updateEntityType($entity_type);
+      $field_storage = $manager->getFieldStorageDefinition('consumerorg_url', $entity_id);
+      if ($field_storage !== NULL) {
+        $manager->updateFieldStorageDefinition($field_storage);
+      }
+    }
+  }
+}

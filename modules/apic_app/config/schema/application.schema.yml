@@ -1,0 +1,188 @@
+field.field.node.application.apic_catalog_id:
+  type: ibm_apim_config_object
+  label: 'APIC Catalog ID'
+
+field.field.node.application.apic_hostname:
+  type: ibm_apim_config_object
+  label: 'APIC Hostname'
+
+field.field.node.application.apic_provider_id:
+  type: ibm_apim_config_object
+  label: 'APIC Provider ID'
+
+field.field.node.application.apic_state:
+  type: ibm_apim_config_object
+  label: 'State'
+
+field.field.node.application.apic_summary:
+  type: ibm_apim_config_object
+  label: 'Description'
+
+field.field.node.application.apic_url:
+  type: ibm_apim_config_object
+  label: 'URL'
+
+field.field.node.application.apic_created_at:
+  type: ibm_apim_config_object
+  label: 'Creation time'
+
+field.field.node.application.apic_updated_at:
+  type: ibm_apim_config_object
+  label: 'Modification time'
+
+field.field.node.application.application_client_type:
+  type: ibm_apim_config_object
+  label: 'Client type'
+
+field.field.node.application.application_consumer_org_url:
+  type: ibm_apim_config_object
+  label: 'Consumer organization URL'
+
+field.field.node.application.application_credentials_refs:
+  type: ibm_apim_config_object
+  label: 'Credentials References'
+
+field.field.node.application.application_data:
+  type: ibm_apim_config_object
+  label: 'Application Data'
+
+field.field.node.application.application_enabled:
+  type: ibm_apim_config_object
+  label: 'Enabled'
+
+field.field.node.application.application_id:
+  type: ibm_apim_config_object
+  label: 'Application ID'
+
+field.field.node.application.application_image:
+  type: ibm_apim_config_object
+  label: 'Image'
+
+field.field.node.application.application_lifecycle_pending:
+  type: ibm_apim_config_object
+  label: 'Pending Lifecycle State'
+
+field.field.node.application.application_lifecycle_state:
+  type: ibm_apim_config_object
+  label: 'Lifecycle State'
+
+field.field.node.application.application_name:
+  type: ibm_apim_config_object
+  label: 'Name'
+
+field.field.node.application.application_redirect_endpoints:
+  type: ibm_apim_config_object
+  label: 'Application OAuth Redirect URL(s)'
+
+field.field.node.application.application_subscription_refs:
+  type: ibm_apim_config_object
+  label: 'Subscription References'
+
+field.field.node.application.application_subscriptions:
+  type: ibm_apim_config_object
+  label: 'Subscriptions'
+
+apic_app.apic_app_application_subs.*:
+  type: content_entity
+  label: 'Application Subscription'
+  mapping:
+    id:
+      type: integer
+      label: 'ID'
+    uuid:
+      type: string
+      label: 'UUID'
+    app_url:
+      type: string
+      label: 'Application URL'
+    product_url:
+      type: string
+      label: 'Product URL'
+    plan:
+      type: string
+      label: 'Plan name'
+    state:
+      type: string
+      label: 'State'
+    billing_url:
+      type: string
+      label: 'Billing URL'
+    consumerorg_url:
+      type: string
+      label: 'Consumer organization URL'
+
+apic_app.apic_app_application_creds.*:
+  type: content_entity
+  label: 'Application Credentials'
+  mapping:
+    id:
+      type: integer
+      label: 'ID'
+    uuid:
+      type: string
+      label: 'UUID'
+    app_url:
+      type: string
+      label: 'Application URL'
+    client_id:
+      type: string
+      label: 'Client ID'
+    name:
+      type: string
+      label: 'Name'
+    title:
+      type: string
+      label: 'Title'
+    summary:
+      type: string
+      label: 'Summary'
+    consumerorg_url:
+      type: string
+      label: 'Consumer organization URL'
+    cred_url:
+      type: string
+      label: 'Credentials URL'
+
+views.view.applications:
+  type: string
+  label: 'Applications'
+
+views.view.applications.display.default.display_options.exposed_form.options:
+  type: string
+  text_input_required: 'Select any filter and click on Apply to see results'
+
+views.view.applications.display.default.display_options.exposed_form.options.bef.sort.advanced:
+  type: string
+  collapsible_label: 'Sort options'
+
+views.view.applications.display.default.display_options.exposed_form.options.bef.general:
+  type: string
+  secondary_label: 'Advanced options'
+
+views.view.applications.display.default.display_options.filters.title.expose:
+  type: string
+  label: 'Title'
+
+views.view.applications.display.default.display_options.sorts.title.expose:
+  type: string
+  label: 'Name'
+
+views.view.applications.display.default.display_options.sorts.created.expose:
+  type: string
+  label: 'Created'
+
+views.view.applications.display.default.display_options.sorts.changed.expose:
+  type: string
+  label: 'Changed'
+
+views.view.applications.display.default.display_options:
+  type: string
+  title: 'Apps'
+
+views.view.applications.display.block_1.display_options:
+  type: string
+  title: 'App List'
+
+views.view.applications.display.page_1.display:
+  type: string
+  title: 'Page'

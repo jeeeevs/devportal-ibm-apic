@@ -1,0 +1,17 @@
+services:
+  auth_apic.login:
+    class: Drupal\auth_apic\UserManagement\Mocks\MockApicLoginService
+    arguments: ['@ibm_apim.mgmtserver',
+                '@ibm_apim.account',
+                '@ibm_apim.user_utils',
+                '@ibm_apim.user_storage',
+                '@tempstore.private',
+                '@logger.channel.auth_apic']
+  auth_apic.password:
+    class: Drupal\auth_apic\UserManagement\Mocks\MockApicPasswordService
+    arguments: ['@ibm_apim.mgmtserver',
+                '@messenger',
+                '@logger.channel.auth_apic']
+  auth_apic.oidc_state:
+    class: Drupal\auth_apic\Service\Mocks\MockOidcStateService
+

@@ -1,0 +1,11 @@
+name: Entity Warmer
+type: module
+description: Warms the entity cache for the configured entity types.
+core_version_requirement: '^9 || ^10'
+dependencies:
+  - warmer:warmer
+
+# Information added by Drupal.org packaging script on 2023-06-29
+version: '2.0.10'
+project: 'warmer'
+datestamp: 1688015658

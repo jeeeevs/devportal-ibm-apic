@@ -1,0 +1,13 @@
+name: Featured Content
+type: module
+description: Block for featured Products or APIs
+package: IBM API Developer Portal
+core_version_requirement: ^8 || ^9
+version: 8.x-2.14.1
+project: featuredcontent
+dependencies:
+- block
+- block_content
+- options
+- masonry
+interface translation project: featuredcontent

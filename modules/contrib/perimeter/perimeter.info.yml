@@ -1,0 +1,12 @@
+type: module
+name: Drupal Perimeter Defence
+description: Immediately ban hackers when they try to scan the site.
+core_version_requirement: ^8.9 || ^9
+dependencies:
+  - drupal:ban
+configure: perimeter.settings
+
+# Information added by Drupal.org packaging script on 2022-12-09
+version: '2.0.0-rc4'
+project: 'perimeter'
+datestamp: 1670603967

@@ -1,0 +1,10 @@
+name: Noopener Filter
+type: module
+description: 'Provides a filter to add rel="noopener" to external links and links in the ckeditor.'
+configure: noopener_filter.settings
+core_version_requirement: ^8 || ^9 || ^10
+
+# Information added by Drupal.org packaging script on 2022-07-04
+version: '8.x-2.1'
+project: 'noopener_filter'
+datestamp: 1656971234

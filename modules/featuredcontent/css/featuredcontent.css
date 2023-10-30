@@ -1,0 +1,95 @@
+.featuredcontent.featuredcontentBlockWrapper {
+  margin: 1.5rem 2rem;
+}
+
+.featuredcontentNode {
+  margin-bottom: 2px;
+  width: calc(25% - 16px);
+  padding: 1rem;
+  background-color: #fff;
+  min-width: 12.5rem;
+  max-height: 12.75rem;
+}
+
+@media (max-width: 1280px) {
+  .featuredcontentNode {
+    width: calc(33% - 14px);
+  }
+}
+
+@media (max-width: 992px) {
+  .featuredcontentNode {
+    width: calc(50% - 11px);
+  }
+}
+
+@media (max-width: 568px) {
+  .featuredcontentNode {
+    width: 100%;
+  }
+}
+
+.featuredcontent h3 {
+  font-weight: lighter;
+  font-size: 1.5rem;
+}
+
+.featuredcontentBlockHeader {
+  display: inline-block;
+  width: calc(100% / 4 - 8px);
+  min-width: 250px;
+  vertical-align: top;
+}
+
+.featuredcontentContentContainer {
+  display: inline-block;
+  width: 75%;
+}
+
+.featuredcontentNodeHeader {
+  align-items: center;
+}
+
+.featuredcontentNodeImage img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.featuredcontentNodeImage {
+  margin-right: 1.25rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-bottom: 0.5rem;
+}
+
+.featuredcontentNodeHeader .featuredcontentNodeTitle {
+  font-size: 0.875rem;
+  line-height: 18px;
+  word-break: break-word;
+  font-family: 'IBM Plex Sans SemiBold', 'IBM Plex Sans', 'sans-serif';
+}
+
+.featuredcontentNodeInfo {
+  padding-top: 0.875rem;
+}
+
+.featuredcontentNodeInfo .featuredcontentNodeSummary,
+.featuredcontentNodeInfo .featuredcontentNodeDescription {
+  font-size: 0.75rem;
+  line-height: 20px;
+  height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.16px;
+}
+
+@media (max-width: 380px) {
+  .featuredcontentBlockHeader,
+  .featuredcontentContentContainer {
+    display: block;
+  }
+
+  .featuredcontentBlockHeader {
+    padding-bottom: 1rem;
+  }
+}
